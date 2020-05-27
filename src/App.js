@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ClassComponent from './classComponent.js';
+// import createElement from './createElement.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props){
+    super();
+
+  }
+  functionalComponent = () => <div>This is a functional component</div>
+
+  render (){
+    return (
+      <React.Fragment>
+        {React.createElement(
+            'div',
+            {className: 'CreateElementDiv'},
+            'This Element was created with React.createElement!'
+          )}
+        {<div className='PureComponentDiv'>
+          <p>This Component is a simple representational Component</p>
+        </div>}
+        <ClassComponent/>
+        {this.functionalComponent()}
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
